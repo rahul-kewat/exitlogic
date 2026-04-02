@@ -79,11 +79,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    class="font-mono w-full max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/50 shadow-[0_0_60px_rgba(0,217,255,0.08)] backdrop-blur-md"
-  >
+  <div class="glass-card font-mono w-full max-w-2xl overflow-hidden rounded-xl p-0">
     <div
-      class="flex items-center gap-2 border-b border-white/10 px-4 py-2.5 text-[11px] text-[#F4F4F4]/50"
+      class="relative z-[1] flex items-center gap-2 border-b border-white/10 px-4 py-2.5 text-[11px] text-[#F4F4F4]/50"
     >
       <span class="inline-flex gap-1.5">
         <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]/90" />
@@ -92,7 +90,9 @@ onUnmounted(() => {
       </span>
       <span class="ml-2 tracking-wide">exitlogic — zsh</span>
     </div>
-    <div class="min-h-[220px] px-4 py-4 text-left text-[12px] leading-relaxed sm:min-h-[260px] sm:text-[13px]">
+    <div
+      class="relative z-[1] min-h-[220px] px-4 py-4 text-left text-[12px] leading-relaxed sm:min-h-[260px] sm:text-[13px]"
+    >
       <p
         v-for="(line, i) in displayLines"
         :key="i"

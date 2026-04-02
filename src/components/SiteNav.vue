@@ -15,6 +15,7 @@ import { Terminal } from 'lucide-vue-next'
       </a>
       <nav class="hidden items-center gap-10 text-sm text-[#F4F4F4]/55 sm:flex" aria-label="Primary">
         <a class="transition hover:text-[#00D9FF]" href="#unlearning">The Unlearning</a>
+        <a class="transition hover:text-[#00D9FF]" href="#timeline">Timeline</a>
         <a class="transition hover:text-[#00D9FF]" href="#stack">Stack</a>
         <a class="transition hover:text-[#00D9FF]" href="#pricing">Pricing</a>
         <a class="transition hover:text-[#00D9FF]" href="#terminal">Terminal</a>

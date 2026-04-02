@@ -80,7 +80,7 @@ const teamPoints = [
         <!-- Urgency widget (only while early access window is active) -->
         <aside
           v-if="earlyAccessActive"
-          class="w-full max-w-sm shrink-0 rounded-2xl border border-white/[0.08] bg-black/40 p-6 backdrop-blur-md lg:sticky lg:top-28 lg:max-w-[280px]"
+          class="glass-card w-full max-w-sm shrink-0 p-6 lg:sticky lg:top-28 lg:max-w-[280px]"
           aria-label="Early access availability"
         >
           <p class="font-mono mb-4 text-center text-[10px] uppercase tracking-[0.25em] text-[#F4F4F4]/45">
@@ -103,9 +103,7 @@ const teamPoints = [
       </div>
 
       <!-- For teams -->
-      <div
-        class="mx-auto mt-16 max-w-lg rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 sm:p-10"
-      >
+      <div class="glass-card mx-auto mt-16 max-w-lg p-8 sm:p-10">
         <div class="mb-6 flex items-center gap-3">
           <Users class="h-6 w-6 text-[#00D9FF]/80" stroke-width="1.5" aria-hidden="true" />
           <h3 class="font-display text-xl font-bold text-[#F4F4F4]">For teams</h3>

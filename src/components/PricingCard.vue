@@ -17,9 +17,7 @@ defineEmits<{
 </script>
 
 <template>
-  <div
-    class="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl sm:p-10"
-  >
+  <div class="glass-card p-8 sm:p-10">
     <div
       v-if="earlyAccessActive"
       class="font-mono mb-6 inline-flex rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[#00D9FF]"

@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import BackgroundLayer from './components/BackgroundLayer.vue'
+import InteractiveCircuits from './components/InteractiveCircuits.vue'
 import ScrollSection from './components/ScrollSection.vue'
 import SiteNav from './components/SiteNav.vue'
 import Terminal from './components/Terminal.vue'
 import TechMarquee from './components/TechMarquee.vue'
 import UnlearningCards from './components/UnlearningCards.vue'
 import PricingSection from './components/PricingSection.vue'
+import TimelineSection from './components/timeline/TimelineSection.vue'
 import { ArrowRight } from 'lucide-vue-next'
 </script>
 
 <template>
-  <BackgroundLayer />
   <SiteNav />
 
   <main class="relative z-10">
     <ScrollSection>
-      <section
-        id="hero"
-        class="mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-center px-5 pb-24 pt-28 sm:px-8 sm:pb-32 sm:pt-32"
-      >
+      <section id="hero" class="relative min-h-[100dvh] overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 z-0">
+          <InteractiveCircuits />
+        </div>
+        <div
+          class="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-center px-5 pb-24 pt-28 sm:px-8 sm:pb-32 sm:pt-32"
+        >
         <p
           class="font-mono mb-6 text-[11px] uppercase tracking-[0.35em] text-[#00D9FF]/75 sm:text-xs"
         >
@@ -52,6 +55,7 @@ import { ArrowRight } from 'lucide-vue-next'
           </a>
           <span class="font-mono text-xs text-[#F4F4F4]/35">esc to rethink · enter to ship</span>
         </div>
+        </div>
       </section>
     </ScrollSection>
 
@@ -73,6 +77,10 @@ import { ArrowRight } from 'lucide-vue-next'
         </div>
         <UnlearningCards />
       </section>
+    </ScrollSection>
+
+    <ScrollSection>
+      <TimelineSection />
     </ScrollSection>
 
     <ScrollSection>
