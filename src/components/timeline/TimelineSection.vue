@@ -73,7 +73,7 @@ onUnmounted(() => {
   <section
     id="timeline"
     ref="sectionRef"
-    class="relative overflow-hidden bg-[#000000] py-24 sm:py-32"
+    class="relative overflow-hidden bg-[#080c14] py-32 sm:py-40"
   >
     <!-- Parallax depth layer -->
     <div
@@ -92,15 +92,15 @@ onUnmounted(() => {
       />
     </div>
 
-    <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-      <header class="mb-20 max-w-2xl md:mb-24">
+    <div class="relative z-10 mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
+      <header class="mx-auto mb-20 max-w-3xl text-center md:mb-28">
         <p class="font-mono text-xs uppercase tracking-[0.28em] text-[#00D9FF]/80">
           trace · execution path
         </p>
-        <h2 class="font-sans mt-3 text-3xl font-semibold tracking-tight text-[#F4F4F4] sm:text-4xl md:text-5xl">
+        <h2 class="font-display mt-4 text-3xl font-bold tracking-[-0.03em] text-[#FAFAFA] sm:text-4xl md:text-5xl">
           Refactor stack
         </h2>
-        <p class="font-sans mt-4 text-[15px] leading-relaxed text-[#F4F4F4]/55 md:text-base">
+        <p class="font-sans mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-[#F4F4F4]/55 md:text-base">
           Three live modules — mindset, agents, workflows — sequenced on one glowing circuit. Scroll to charge the line.
         </p>
       </header>

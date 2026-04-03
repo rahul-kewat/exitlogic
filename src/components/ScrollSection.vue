@@ -90,7 +90,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="root" class="will-change-transform">
+  <!-- Wrapper is a div so slotted <section> stays valid (no nested sections). -->
+  <div ref="root" class="will-change-transform">
     <slot />
-  </section>
+  </div>
 </template>

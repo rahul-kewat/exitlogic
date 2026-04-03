@@ -7,13 +7,13 @@ defineProps<{
 </script>
 
 <template>
-  <ul class="flex flex-col gap-3.5 text-left text-[15px] leading-snug text-[#F4F4F4]/75">
-    <li v-for="(item, i) in items" :key="i" class="flex gap-3">
-      <Check
-        class="mt-0.5 h-5 w-5 shrink-0 text-[#00D9FF]"
-        stroke-width="2.25"
-        aria-hidden="true"
-      />
+  <ul class="flex flex-col gap-3.5 text-left text-[15px] leading-snug text-[#E8E8E8]/82">
+    <li v-for="(item, i) in items" :key="i" class="group flex gap-3.5">
+      <span
+        class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-[#00D9FF]/25 bg-[#00D9FF]/[0.08] transition group-hover:border-[#00D9FF]/45 group-hover:bg-[#00D9FF]/[0.12]"
+      >
+        <Check class="h-3.5 w-3.5 text-[#00D9FF]" stroke-width="2.5" aria-hidden="true" />
+      </span>
       <span>{{ item }}</span>
     </li>
   </ul>

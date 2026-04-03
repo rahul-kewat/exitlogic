@@ -87,7 +87,7 @@ onMounted(() => {
       </section>
     </ScrollSection>
 
-    <ScrollSection>
+    <ScrollSection stagger-children>
       <HardTruthSection />
     </ScrollSection>
 
@@ -95,23 +95,29 @@ onMounted(() => {
       <LifetimeMasterySection />
     </ScrollSection>
 
-    <ScrollSection>
+    <ScrollSection stagger-children>
       <section
         id="ai-workflow"
-        class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
+        class="relative border-t border-white/[0.05] bg-[#000205] py-28 sm:py-36 lg:py-44"
       >
-        <div class="mb-16 max-w-3xl sm:mb-20">
-          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-            the ai-accelerated workflow
-          </p>
-          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            Ship like the stack owes you interest
-          </h2>
-          <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-            Not “learn to code slower”—learn to lead the machine. Three levers that separate operators from order-takers.
-          </p>
+        <div
+          class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(0,217,255,0.02)_50%,transparent_100%)]"
+          aria-hidden="true"
+        />
+        <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
+          <div class="mx-auto mb-16 max-w-3xl text-center sm:mb-20">
+            <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
+              the ai-accelerated workflow
+            </p>
+            <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
+              Ship like the stack owes you interest
+            </h2>
+            <p class="font-sans mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
+              Not “learn to code slower”—learn to lead the machine. Six levers that separate operators from order-takers.
+            </p>
+          </div>
+          <UnlearningCards />
         </div>
-        <UnlearningCards />
       </section>
     </ScrollSection>
 
@@ -120,19 +126,25 @@ onMounted(() => {
     </ScrollSection>
 
     <ScrollSection>
-      <section id="stack" class="mx-auto max-w-[90rem] px-5 py-20 sm:px-10 sm:py-28 lg:px-14">
-        <div class="mb-12 max-w-3xl sm:mb-14">
-          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-            dependencies
-          </p>
-          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            The stack you’ll actually bill on
-          </h2>
-          <p class="font-sans mt-4 max-w-2xl text-[#E8E8E8]/50">
-            Laravel, Vue, AI tooling—chosen to compound, not to pad a resume.
-          </p>
+      <section id="stack" class="relative bg-[#000205] py-24 sm:py-32 lg:py-40">
+        <div
+          class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent"
+          aria-hidden="true"
+        />
+        <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
+          <div class="mx-auto mb-14 max-w-3xl text-center sm:mb-16">
+            <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
+              dependencies
+            </p>
+            <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
+              The stack you’ll actually bill on
+            </h2>
+            <p class="font-sans mx-auto mt-4 max-w-2xl text-[#E8E8E8]/50">
+              Laravel, Vue, AI tooling—chosen to compound, not to pad a resume.
+            </p>
+          </div>
+          <TechMarquee />
         </div>
-        <TechMarquee />
       </section>
     </ScrollSection>
 
@@ -141,8 +153,10 @@ onMounted(() => {
     </ScrollSection>
 
     <ScrollSection>
-      <section id="pricing" class="py-28 sm:py-36">
-        <PricingSection />
+      <section id="pricing" class="relative border-t border-white/[0.04] bg-[#000205] py-28 sm:py-36">
+        <div class="relative">
+          <PricingSection />
+        </div>
       </section>
     </ScrollSection>
 
@@ -152,9 +166,13 @@ onMounted(() => {
 
     <ScrollSection>
       <footer
-        class="mx-auto max-w-[90rem] border-t border-white/[0.07] px-5 py-20 sm:px-10 lg:px-14"
+        class="relative border-t border-white/[0.07] bg-[#000205] px-5 py-24 sm:px-10 lg:px-14"
       >
-        <div class="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
+        <div
+          class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00D9FF]/15 to-transparent"
+          aria-hidden="true"
+        />
+        <div class="mx-auto flex max-w-[90rem] flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p class="font-display text-xl font-bold tracking-tight text-[#FAFAFA]">ExitLogic</p>
             <p class="font-mono mt-3 text-[10px] uppercase tracking-[0.28em] text-[#F4F4F4]/38">

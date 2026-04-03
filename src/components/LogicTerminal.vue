@@ -194,8 +194,18 @@ onBeforeUnmount(() => {
   <section
     id="terminal"
     ref="rootRef"
-    class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
+    class="relative bg-[#080c14] py-28 sm:py-36 lg:py-44"
   >
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00D9FF]/20 to-transparent"
+      aria-hidden="true"
+    />
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(0,217,255,0.04),transparent_55%)]"
+      aria-hidden="true"
+    />
+
+    <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
     <div class="mb-12 max-w-3xl sm:mb-14">
       <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">stdout</p>
       <h2
@@ -296,6 +306,7 @@ onBeforeUnmount(() => {
         </p>
       </div>
     </Transition>
+    </div>
   </section>
 </template>
 

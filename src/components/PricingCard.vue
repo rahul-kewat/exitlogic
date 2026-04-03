@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import FeatureList from './FeatureList.vue'
-import { Shield } from 'lucide-vue-next'
+import { Shield, Sparkles } from 'lucide-vue-next'
 
 withDefaults(
   defineProps<{
@@ -25,69 +25,114 @@ defineEmits<{
 </script>
 
 <template>
-  <div class="glass-card p-8 sm:p-10">
+  <div class="relative">
+    <!-- Ambient glow -->
     <div
-      v-if="earlyAccessActive"
-      class="font-mono mb-6 inline-flex rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[#00D9FF]"
-    >
-      Legacy rate · Beta lock-in
-    </div>
-    <div v-else class="font-mono mb-6 inline-flex rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#F4F4F4]/45">
-      Standard pricing
-    </div>
-
-    <div class="mb-2 flex flex-wrap items-end gap-3">
-      <span class="font-display text-4xl font-bold tracking-tight text-[#F4F4F4] sm:text-5xl">
-        {{ priceLabel }}
-      </span>
-      <span class="font-mono mb-1 text-sm text-[#F4F4F4]/45">one-time</span>
-    </div>
-    <div v-if="earlyAccessActive" class="mb-1 flex flex-wrap items-center gap-3">
-      <span class="font-mono text-lg text-[#F4F4F4]/35 line-through decoration-[#F4F4F4]/25">
-        {{ listPriceLabel }}
-      </span>
-      <span class="font-mono text-xs uppercase tracking-wider text-[#00D9FF]/80">Early access</span>
-    </div>
-    <p v-if="pppDiscountPercent > 0" class="font-mono mb-6 text-xs text-[#00D9FF]/90">
-      PPP adjustment applied: −{{ pppDiscountPercent }}%
-      <span v-if="pppRegion" class="text-[#F4F4F4]/50">({{ pppRegion }})</span>
-    </p>
-    <p v-else class="mb-6 text-sm text-[#F4F4F4]/40">
-      Buy once — no subscription. Local pricing via PPP when available.
-    </p>
-
-    <FeatureList :items="features" />
-
-    <button
-      type="button"
-      class="font-display mt-10 w-full rounded-xl bg-[#00D9FF] py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_32px_rgba(0,217,255,0.35)] transition hover:shadow-[0_0_48px_rgba(0,217,255,0.55)]"
-      @click="$emit('cta')"
-    >
-      {{
-        ctaLabel ||
-        (earlyAccessActive ? 'Secure My Future Access' : 'Claim My Unfair Advantage')
-      }}
-    </button>
-
-    <p v-if="ctaCaption" class="mt-4 text-center text-[13px] leading-snug text-[#F4F4F4]/45">
-      {{ ctaCaption }}
-    </p>
-
-    <div class="mt-5 flex items-start gap-2 text-sm text-[#F4F4F4]/45">
-      <Shield class="mt-0.5 h-4 w-4 shrink-0 text-[#00D9FF]/70" stroke-width="1.75" aria-hidden="true" />
-      <span>30-day refund if ExitLogic isn’t a fit — no questions asked.</span>
-    </div>
+      class="pointer-events-none absolute -inset-1 rounded-[1.35rem] bg-gradient-to-b from-[#00D9FF]/25 via-[#00D9FF]/5 to-transparent opacity-60 blur-xl"
+      aria-hidden="true"
+    />
+    <div
+      class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00D9FF]/[0.12] via-transparent to-transparent opacity-50"
+      aria-hidden="true"
+    />
 
     <div
-      class="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-white/[0.06] pt-8 text-[11px] font-medium uppercase tracking-wider text-[#F4F4F4]/35"
+      class="relative overflow-hidden rounded-3xl border border-white/[0.1] bg-gradient-to-b from-[#121820]/95 to-[#0a0e14] p-8 shadow-[0_32px_100px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-[box-shadow,border-color] duration-300 hover:border-[#00D9FF]/22 hover:shadow-[0_0_44px_rgba(0,217,255,0.14),0_32px_100px_rgba(0,0,0,0.55)] sm:p-10"
     >
-      <span>Apple Pay</span>
-      <span class="text-white/15">·</span>
-      <span>Google Pay</span>
-      <span class="text-white/15">·</span>
-      <span>Visa</span>
-      <span class="text-white/15">·</span>
-      <span>Mastercard</span>
+      <div
+        class="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#00D9FF]/[0.07] blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D9FF]/30 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div class="relative">
+        <div class="mb-8 flex flex-wrap items-start justify-between gap-4">
+          <div
+            v-if="earlyAccessActive"
+            class="inline-flex items-center gap-2 rounded-full border border-[#00D9FF]/40 bg-[#00D9FF]/10 px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[#00D9FF]"
+          >
+            <Sparkles class="h-3.5 w-3.5" stroke-width="2" aria-hidden="true" />
+            Legacy rate · Beta lock-in
+          </div>
+          <div
+            v-else
+            class="inline-flex rounded-full border border-white/15 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F4F4F4]/45"
+          >
+            Standard pricing
+          </div>
+        </div>
+
+        <div class="mb-8 border-b border-white/[0.07] pb-8">
+          <p class="font-mono text-[10px] uppercase tracking-[0.35em] text-[#F4F4F4]/35">Total today</p>
+          <div class="mt-3 flex flex-wrap items-end gap-3">
+            <span
+              class="font-display bg-gradient-to-br from-[#FAFAFA] to-[#B8B8B8] bg-clip-text text-5xl font-black tracking-tight text-transparent sm:text-6xl"
+            >
+              {{ priceLabel }}
+            </span>
+            <span class="font-mono mb-2 text-sm text-[#F4F4F4]/45">one-time</span>
+          </div>
+          <div v-if="earlyAccessActive" class="mt-4 flex flex-wrap items-center gap-3">
+            <span class="font-mono text-xl text-[#F4F4F4]/30 line-through decoration-[#F4F4F4]/20 sm:text-2xl">
+              {{ listPriceLabel }}
+            </span>
+            <span
+              class="rounded-md border border-[#00D9FF]/30 bg-[#00D9FF]/10 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-[#00D9FF]"
+              >Early access</span
+            >
+          </div>
+        </div>
+
+        <p v-if="pppDiscountPercent > 0" class="font-mono mb-6 text-sm text-[#00D9FF]/90">
+          PPP adjustment applied: −{{ pppDiscountPercent }}%
+          <span v-if="pppRegion" class="text-[#F4F4F4]/50">({{ pppRegion }})</span>
+        </p>
+        <p v-else class="mb-8 text-sm leading-relaxed text-[#F4F4F4]/45">
+          Buy once — no subscription. Local pricing via PPP when available.
+        </p>
+
+        <div class="mb-3">
+          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-[#00D9FF]/70">Included in your vault</p>
+        </div>
+        <FeatureList :items="features" />
+
+        <button
+          type="button"
+          class="font-display group relative mt-10 w-full overflow-hidden rounded-xl bg-[#00D9FF] py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_40px_rgba(0,217,255,0.35)] transition duration-300 hover:shadow-[0_0_64px_rgba(0,217,255,0.5)]"
+          @click="$emit('cta')"
+        >
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"
+          />
+          <span class="relative">{{
+            ctaLabel || (earlyAccessActive ? 'Secure My Future Access' : 'Claim My Unfair Advantage')
+          }}</span>
+        </button>
+
+        <p v-if="ctaCaption" class="mt-4 text-center text-[13px] leading-snug text-[#F4F4F4]/45">
+          {{ ctaCaption }}
+        </p>
+
+        <div class="mt-6 flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-sm text-[#F4F4F4]/50">
+          <Shield class="mt-0.5 h-5 w-5 shrink-0 text-[#00D9FF]/75" stroke-width="1.75" aria-hidden="true" />
+          <span>30-day refund if ExitLogic isn’t a fit — no questions asked.</span>
+        </div>
+
+        <div
+          class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/[0.06] pt-8 text-[10px] font-medium uppercase tracking-[0.2em] text-[#F4F4F4]/30"
+        >
+          <span>Apple Pay</span>
+          <span class="text-white/15">·</span>
+          <span>Google Pay</span>
+          <span class="text-white/15">·</span>
+          <span>Visa</span>
+          <span class="text-white/15">·</span>
+          <span>Mastercard</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>

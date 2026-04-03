@@ -12,16 +12,16 @@ const row = [...items, ...items, ...items]
 </script>
 
 <template>
-  <div class="relative w-full overflow-hidden py-4">
+  <div class="relative w-full overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0D1117]/30 py-8">
     <div
-      class="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#000000] to-transparent"
+      class="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-[#000205] to-transparent"
     />
     <div
-      class="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#000000] to-transparent"
+      class="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-gradient-to-l from-[#000205] to-transparent"
     />
 
     <div
-      class="marquee-track animate-[marquee_28s_linear_infinite] flex w-max gap-12 sm:gap-16"
+      class="marquee-track animate-[marquee_32s_linear_infinite] flex w-max gap-14 sm:gap-20"
     >
       <div
         v-for="(item, i) in row"
