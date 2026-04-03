@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { Brain, Link2, Rocket } from 'lucide-vue-next'
+import { Sparkles, TestTube, Zap } from 'lucide-vue-next'
 
 const cards = [
   {
-    title: 'Unlearn the default path',
-    body: 'Institutional scripts optimize for safety, not sovereignty. Name the assumptions you inherited without audit.',
-    icon: Brain,
+    title: 'AI-driven architecture',
+    body: 'Design systems in minutes, not days—spec the stack, ship the skeleton, let AI handle the boilerplate you used to dread.',
+    icon: Sparkles,
   },
   {
-    title: 'Decouple from legacy incentives',
-    body: 'Your calendar is an API surface. Refactor commitments the way you would untangle a monolith.',
-    icon: Link2,
+    title: 'Autonomous testing',
+    body: 'Let AI surface edge cases before your client does. Tests become a safety net, not a weekend tax.',
+    icon: TestTube,
   },
   {
-    title: 'Ship toward autonomy',
-    body: 'Small experiments beat big plans. Version your career like software: iterate, measure, merge forward.',
-    icon: Rocket,
+    title: 'Rapid freelancing',
+    body: 'Learn how to compress forty hours of grind into four using the Cursor + AI workflow—so your calendar matches your ambition.',
+    icon: Zap,
   },
 ] as const
 </script>

@@ -7,16 +7,23 @@ import HeroCursorGlow from './components/hero/HeroCursorGlow.vue'
 import PageIntroOverlay from './components/hero/PageIntroOverlay.vue'
 import ScrollSection from './components/ScrollSection.vue'
 import SiteNav from './components/SiteNav.vue'
-import Terminal from './components/Terminal.vue'
+import LogicTerminal from './components/LogicTerminal.vue'
 import TechMarquee from './components/TechMarquee.vue'
 import UnlearningCards from './components/UnlearningCards.vue'
 import PricingSection from './components/PricingSection.vue'
 import TimelineSection from './components/timeline/TimelineSection.vue'
+import HardTruthSection from './components/sections/HardTruthSection.vue'
+import LifetimeMasterySection from './components/sections/LifetimeMasterySection.vue'
+import DeveloperComparison from './components/sections/DeveloperComparison.vue'
 
 /** Lazy-load Three.js so first paint stays light. */
 const HeroWebGL = defineAsyncComponent(() => import('./components/hero/HeroWebGL.vue'))
 
 const eyebrowRef = ref<HTMLElement | null>(null)
+
+function onTerminalCommit() {
+  // Optional: sync with HeroWebGL / background (e.g. faster particle drift) — wire when needed
+}
 
 onMounted(() => {
   const el = eyebrowRef.value
@@ -69,7 +76,7 @@ onMounted(() => {
               ref="eyebrowRef"
               class="font-mono mb-8 text-[10px] uppercase tracking-[0.55em] text-[#00D9FF]/70 sm:mb-10 sm:text-[11px] will-change-transform"
             >
-              career.refactor · exit architecture
+              exit strategy · ai-powered stack
             </p>
 
             <HeroHeadline />
@@ -81,19 +88,27 @@ onMounted(() => {
     </ScrollSection>
 
     <ScrollSection>
+      <HardTruthSection />
+    </ScrollSection>
+
+    <ScrollSection>
+      <LifetimeMasterySection />
+    </ScrollSection>
+
+    <ScrollSection>
       <section
-        id="unlearning"
+        id="ai-workflow"
         class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
       >
         <div class="mb-16 max-w-3xl sm:mb-20">
           <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-            module · unlearning
+            the ai-accelerated workflow
           </p>
           <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            The Unlearning
+            Ship like the stack owes you interest
           </h2>
           <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-            Glass panels, sharp intent — three moves to migrate out of default-mode employment.
+            Not “learn to code slower”—learn to lead the machine. Three levers that separate operators from order-takers.
           </p>
         </div>
         <UnlearningCards />
@@ -111,11 +126,18 @@ onMounted(() => {
             dependencies
           </p>
           <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            What we ship with
+            The stack you’ll actually bill on
           </h2>
+          <p class="font-sans mt-4 max-w-2xl text-[#E8E8E8]/50">
+            Laravel, Vue, AI tooling—chosen to compound, not to pad a resume.
+          </p>
         </div>
         <TechMarquee />
       </section>
+    </ScrollSection>
+
+    <ScrollSection>
+      <DeveloperComparison />
     </ScrollSection>
 
     <ScrollSection>
@@ -125,23 +147,7 @@ onMounted(() => {
     </ScrollSection>
 
     <ScrollSection>
-      <section
-        id="terminal"
-        class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
-      >
-        <div class="mb-12 max-w-3xl sm:mb-14">
-          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-            stdout
-          </p>
-          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            Commit the mindset
-          </h2>
-          <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-            Watch the refactor land — your terminal already knows the truth.
-          </p>
-        </div>
-        <Terminal />
-      </section>
+      <LogicTerminal @commit-complete="onTerminalCommit" />
     </ScrollSection>
 
     <ScrollSection>
@@ -152,12 +158,11 @@ onMounted(() => {
           <div>
             <p class="font-display text-xl font-bold tracking-tight text-[#FAFAFA]">ExitLogic</p>
             <p class="font-mono mt-3 text-[10px] uppercase tracking-[0.28em] text-[#F4F4F4]/38">
-              © {{ new Date().getFullYear() }} · post-salary era
+              © {{ new Date().getFullYear() }} · built for the exit, not the performance review
             </p>
           </div>
           <p class="max-w-md font-sans text-sm leading-relaxed text-[#E8E8E8]/42">
-            Precision typography. Motion that breathes. A surface that feels expensive — because your exit strategy
-            should.
+            The window for “later” is closing. The legacy rate isn’t.
           </p>
         </div>
       </footer>

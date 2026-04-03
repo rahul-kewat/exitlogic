@@ -39,12 +39,15 @@ onMounted(() => {
         ExitLogic
       </a>
       <nav
-        class="hidden items-center gap-8 text-[11px] font-medium uppercase tracking-[0.28em] text-[#E8E8E8]/45 sm:flex lg:gap-11"
+        class="hidden flex-wrap items-center justify-end gap-x-6 gap-y-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#E8E8E8]/45 lg:flex lg:gap-x-8"
         aria-label="Primary"
       >
-        <a class="transition duration-300 hover:text-[#00D9FF]" href="#unlearning">Unlearning</a>
-        <a class="transition duration-300 hover:text-[#00D9FF]" href="#timeline">Timeline</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#hard-truth">Truth</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#lifetime-mastery">Vault</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#ai-workflow">AI flow</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#timeline">Path</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#stack">Stack</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#comparison">Split</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#pricing">Pricing</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#terminal">Terminal</a>
       </nav>

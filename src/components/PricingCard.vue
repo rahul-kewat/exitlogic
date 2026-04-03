@@ -2,14 +2,22 @@
 import FeatureList from './FeatureList.vue'
 import { Shield } from 'lucide-vue-next'
 
-defineProps<{
-  listPriceLabel: string
-  priceLabel: string
-  earlyAccessActive: boolean
-  pppDiscountPercent: number
-  pppRegion: string | null
-  features: readonly string[]
-}>()
+withDefaults(
+  defineProps<{
+    listPriceLabel: string
+    priceLabel: string
+    earlyAccessActive: boolean
+    pppDiscountPercent: number
+    pppRegion: string | null
+    features: readonly string[]
+    ctaLabel?: string
+    ctaCaption?: string
+  }>(),
+  {
+    ctaLabel: '',
+    ctaCaption: '',
+  },
+)
 
 defineEmits<{
   cta: []
@@ -22,7 +30,7 @@ defineEmits<{
       v-if="earlyAccessActive"
       class="font-mono mb-6 inline-flex rounded-full border border-[#00D9FF]/35 bg-[#00D9FF]/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[#00D9FF]"
     >
-      Early access · Batch 2
+      Legacy rate · Beta lock-in
     </div>
     <div v-else class="font-mono mb-6 inline-flex rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#F4F4F4]/45">
       Standard pricing
@@ -55,8 +63,15 @@ defineEmits<{
       class="font-display mt-10 w-full rounded-xl bg-[#00D9FF] py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_32px_rgba(0,217,255,0.35)] transition hover:shadow-[0_0_48px_rgba(0,217,255,0.55)]"
       @click="$emit('cta')"
     >
-      {{ earlyAccessActive ? 'Get early access' : 'Buy once' }}
+      {{
+        ctaLabel ||
+        (earlyAccessActive ? 'Secure My Future Access' : 'Claim My Unfair Advantage')
+      }}
     </button>
+
+    <p v-if="ctaCaption" class="mt-4 text-center text-[13px] leading-snug text-[#F4F4F4]/45">
+      {{ ctaCaption }}
+    </p>
 
     <div class="mt-5 flex items-start gap-2 text-sm text-[#F4F4F4]/45">
       <Shield class="mt-0.5 h-4 w-4 shrink-0 text-[#00D9FF]/70" stroke-width="1.75" aria-hidden="true" />

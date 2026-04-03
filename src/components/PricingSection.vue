@@ -26,16 +26,14 @@ const spotsLeft = spotsTotal - spotsTaken
 const fillPercent = computed(() => (spotsTaken / spotsTotal) * 100)
 
 const features = [
-  'Four focused video modules every week — ship your exit in public.',
-  'Private Discord — cohort, accountability, and async office hours.',
-  'Permanent materials vault — templates, checklists, and replays.',
-  'Early drops on new playbooks before public release.',
-  'Laravel + Vue + AI freelancing stack tracks (pick your lane).',
-  'Code review–style feedback on your first client proposals.',
-  'Quarterly live “refactor your offer” sessions.',
+  'Lifetime vault access—every new Laravel, Vue, and AI-agent module ships to you at no extra cost.',
+  'Full AI-accelerated workflow track: architecture, testing, and Cursor-first freelancing.',
+  'Private Discord—cohort pressure, async office hours, deal flow you can’t get from a Udemy comment.',
+  'Templates, contracts, and proposal kits built for solo operators who bill like agencies.',
+  'Early drops before the public roadmap—when we ship it, you already have it.',
+  'Legacy rate locked: as the vault doubles, new members pay double—you never pay again.',
   'Purchasing parity pricing when your region qualifies (via PPP API).',
-  'Invoice-ready receipt for teams and expense policies.',
-  'No recurring charge — pay once, keep access to what you unlocked.',
+  'Invoice-ready receipt. One payment, no subscription trap.',
 ] as const
 
 function onCta() {
@@ -54,13 +52,31 @@ const teamPoints = [
     <div class="mx-auto max-w-6xl px-5 sm:px-8">
       <div class="mb-12 max-w-2xl">
         <p class="font-mono mb-3 text-xs uppercase tracking-[0.28em] text-[#00D9FF]/80">
-          pricing.pricing_module
+          pricing · exit ticket
         </p>
         <h2 class="font-display text-3xl font-bold tracking-tight text-[#F4F4F4] sm:text-4xl">
-          Become dangerous
+          Lock the unfair advantage before the price doubles
         </h2>
         <p class="mt-4 text-[#F4F4F4]/55">
-          One payment. Full access for this cohort. Early access window and PPP hook up to your backend when you’re ready.
+          This isn't another course drop—it's a vault that grows while your receipt stays the same. Early members ride at
+          today's legacy rate forever; latecomers fund the next wave at full price.
+        </p>
+      </div>
+
+      <div
+        class="glass-card mb-10 max-w-3xl border border-[#00D9FF]/20 bg-[#00D9FF]/[0.04] p-6 sm:p-8"
+        role="note"
+      >
+        <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-[#00D9FF]/90">beta · legacy rate</p>
+        <p class="font-sans mt-3 text-base leading-relaxed text-[#E8E8E8]/75 sm:text-lg">
+          The number on your screen is a
+          <span class="font-semibold text-[#FAFAFA]">legacy rate</span>
+          for people who move before the vault fills out. Every major module we add—more stack tracks, more AI
+          playbooks—pushes the public price up for new enrollments. You pay once at this tier and never again, no matter
+          how deep the library gets.
+        </p>
+        <p class="font-sans mt-4 text-sm text-[#F4F4F4]/45">
+          Wait, and you're not saving money—you're choosing to fund someone else's head start.
         </p>
       </div>
 
@@ -73,6 +89,7 @@ const teamPoints = [
             :ppp-discount-percent="pppDiscountPercent"
             :ppp-region="pppRegion"
             :features="features"
+            cta-caption="Join 500+ developers who decided to stop asking for permission."
             @cta="onCta"
           />
         </div>
@@ -84,12 +101,12 @@ const teamPoints = [
           aria-label="Early access availability"
         >
           <p class="font-mono mb-4 text-center text-[10px] uppercase tracking-[0.25em] text-[#F4F4F4]/45">
-            Window closes in
+            Legacy window closes in
           </p>
           <CountdownTimer :target-date="EARLY_ACCESS_END" />
           <div class="mt-8">
             <div class="mb-2 flex justify-between text-xs text-[#F4F4F4]/55">
-              <span>Spots</span>
+              <span>Seats at this rate</span>
               <span class="font-mono text-[#00D9FF]">{{ spotsLeft }}/{{ spotsTotal }} left</span>
             </div>
             <div class="h-2 overflow-hidden rounded-full bg-white/[0.06]">

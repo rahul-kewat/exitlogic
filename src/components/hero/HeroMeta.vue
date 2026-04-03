@@ -36,10 +36,10 @@ onMounted(() => {
   <div ref="root">
     <p
       data-reveal
-      class="font-sans mt-10 max-w-xl text-[1.05rem] leading-[1.65] text-[#E8E8E8]/72 sm:mt-12 sm:text-xl sm:leading-relaxed"
+      class="font-sans mt-10 max-w-2xl text-[1.05rem] leading-[1.65] text-[#E8E8E8]/75 sm:mt-12 sm:text-xl sm:leading-relaxed"
     >
-      Your 9-to-5 is a legacy system. Refactor your career with the same rigor you ship code — capital, clarity,
-      forward velocity.
+      Master the AI-powered developer stack—design, code, architecture, testing. This isn't just a course; it's your
+      unfair advantage in a world where average developers are becoming obsolete.
     </p>
 
     <div
@@ -48,10 +48,10 @@ onMounted(() => {
     >
       <a
         id="hero-cta"
-        href="#unlearning"
-        class="font-display group relative inline-flex w-fit items-center justify-center gap-2 overflow-hidden rounded-full bg-[#00D9FF] px-10 py-4 text-[15px] font-bold tracking-tight text-[#000205] shadow-[0_0_40px_rgba(0,217,255,0.35)] transition duration-500 ease-out hover:shadow-[0_0_64px_rgba(0,217,255,0.55)]"
+        href="#pricing"
+        class="font-display group relative inline-flex w-fit items-center justify-center gap-2 overflow-hidden rounded-full bg-[#00D9FF] px-10 py-4 text-[14px] font-bold tracking-tight text-[#000205] shadow-[0_0_40px_rgba(0,217,255,0.35)] transition duration-500 ease-out hover:shadow-[0_0_64px_rgba(0,217,255,0.55)] sm:text-[15px]"
       >
-        <span class="relative z-10">Start the exit</span>
+        <span class="relative z-10">Secure My Future Access</span>
         <ArrowRight
           class="relative z-10 h-5 w-5 transition duration-300 group-hover:translate-x-0.5"
           stroke-width="2.25"
@@ -62,18 +62,25 @@ onMounted(() => {
         />
       </a>
       <a
-        href="#pricing"
+        href="#comparison"
         class="font-display inline-flex w-fit items-center justify-center rounded-full border border-white/[0.14] bg-white/[0.03] px-8 py-3.5 text-[13px] font-semibold tracking-wide text-[#F4F4F4]/90 backdrop-blur-sm transition duration-300 hover:border-[#00D9FF]/35 hover:bg-white/[0.06]"
       >
-        View access
+        See the split
       </a>
     </div>
 
     <p
       data-reveal
-      class="font-mono mt-10 text-[10px] uppercase tracking-[0.32em] text-[#F4F4F4]/28 sm:mt-12"
+      class="font-sans mt-6 max-w-lg text-sm leading-relaxed text-[#E8E8E8]/50 sm:text-[15px]"
     >
-      scroll · the stack reveals itself
+      Join 500+ developers who decided to stop asking for permission.
+    </p>
+
+    <p
+      data-reveal
+      class="font-mono mt-8 text-[10px] uppercase tracking-[0.32em] text-[#F4F4F4]/28 sm:mt-10"
+    >
+      scroll · the vault is waiting
     </p>
   </div>
 </template>

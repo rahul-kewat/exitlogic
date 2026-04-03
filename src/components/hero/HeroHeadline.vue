@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { animate } from 'motion'
 
-const lines = ['THE', 'LOGIC', 'IS', 'BROKEN.'] as const
+const lines = ['THE INDUSTRY IS MOVING.', "DON'T GET LEFT", 'BEHIND IN A', 'CUBICLE.'] as const
 const root = ref<HTMLElement | null>(null)
 
 onMounted(() => {
@@ -24,7 +24,7 @@ onMounted(() => {
     items,
     { opacity: 1, transform: 'translate3d(0, 0, 0)' },
     {
-      delay: (_el, i) => 0.28 + i * 0.1,
+      delay: (_el, i) => 0.28 + i * 0.09,
       duration: 1,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
   <h1
     ref="root"
-    class="font-display text-[clamp(2.75rem,11vw,6.25rem)] font-black leading-[0.88] tracking-[-0.045em] text-[#FAFAFA]"
+    class="font-display text-[clamp(2.25rem,9vw,5.5rem)] font-black leading-[0.9] tracking-[-0.04em] text-[#FAFAFA]"
   >
     <span
       v-for="line in lines"
