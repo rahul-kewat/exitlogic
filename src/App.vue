@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import InteractiveCircuits from './components/InteractiveCircuits.vue'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
+import { animate } from 'motion'
+import HeroHeadline from './components/hero/HeroHeadline.vue'
+import HeroMeta from './components/hero/HeroMeta.vue'
+import HeroCursorGlow from './components/hero/HeroCursorGlow.vue'
+import PageIntroOverlay from './components/hero/PageIntroOverlay.vue'
 import ScrollSection from './components/ScrollSection.vue'
 import SiteNav from './components/SiteNav.vue'
 import Terminal from './components/Terminal.vue'
@@ -7,54 +12,70 @@ import TechMarquee from './components/TechMarquee.vue'
 import UnlearningCards from './components/UnlearningCards.vue'
 import PricingSection from './components/PricingSection.vue'
 import TimelineSection from './components/timeline/TimelineSection.vue'
-import { ArrowRight } from 'lucide-vue-next'
+
+/** Lazy-load Three.js so first paint stays light. */
+const HeroWebGL = defineAsyncComponent(() => import('./components/hero/HeroWebGL.vue'))
+
+const eyebrowRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const el = eyebrowRef.value
+  if (!el) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  el.style.opacity = '0'
+  el.style.transform = 'translate3d(0, 14px, 0)'
+  animate(
+    el,
+    { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    {
+      delay: 0.06,
+      duration: 0.85,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  )
+})
 </script>
 
 <template>
+  <PageIntroOverlay />
   <SiteNav />
 
   <main class="relative z-10">
     <ScrollSection>
-      <section id="hero" class="relative min-h-[100dvh] overflow-hidden">
+      <section id="hero" class="relative min-h-[100dvh] overflow-hidden bg-[#000205]">
         <div class="pointer-events-none absolute inset-0 z-0">
-          <InteractiveCircuits />
+          <HeroWebGL />
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-[#000205]/20 via-transparent to-[#000205] sm:from-[#000205]/40"
+            aria-hidden="true"
+          />
+          <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,rgba(0,0,0,0.85),transparent_65%)]"
+            aria-hidden="true"
+          />
+          <div
+            class="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay [background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')]"
+            aria-hidden="true"
+          />
         </div>
+
+        <HeroCursorGlow hero-selector="#hero" />
+
         <div
-          class="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-center px-5 pb-24 pt-28 sm:px-8 sm:pb-32 sm:pt-32"
+          class="relative z-10 mx-auto flex min-h-[100dvh] max-w-[90rem] flex-col justify-end px-5 pb-20 pt-32 sm:justify-center sm:px-10 sm:pb-28 sm:pt-36 lg:px-14"
         >
-        <p
-          class="font-mono mb-6 text-[11px] uppercase tracking-[0.35em] text-[#00D9FF]/75 sm:text-xs"
-        >
-          // career.refactor()
-        </p>
-        <h1
-          class="font-display max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-black leading-[0.95] tracking-[-0.04em] text-[#F4F4F4]"
-        >
-          THE LOGIC IS BROKEN.
-        </h1>
-        <p
-          class="mt-8 max-w-xl text-lg leading-relaxed text-[#F4F4F4]/65 sm:text-xl"
-        >
-          Your 9-to-5 is a legacy system. It’s time to refactor your career.
-        </p>
-        <div class="mt-12 flex flex-wrap items-center gap-5">
-          <a
-            id="hero-cta"
-            href="#unlearning"
-            class="font-display group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#00D9FF] px-8 py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_32px_rgba(0,217,255,0.45)] transition duration-300 hover:shadow-[0_0_56px_rgba(0,217,255,0.65)]"
-          >
-            <span class="relative z-10">Start the Exit Logic</span>
-            <ArrowRight
-              class="relative z-10 h-5 w-5 transition group-hover:translate-x-0.5"
-              stroke-width="2.25"
-              aria-hidden="true"
-            />
-            <span
-              class="absolute inset-0 bg-gradient-to-r from-white/25 to-transparent opacity-0 transition group-hover:opacity-100"
-            />
-          </a>
-          <span class="font-mono text-xs text-[#F4F4F4]/35">esc to rethink · enter to ship</span>
-        </div>
+          <div class="max-w-5xl">
+            <p
+              ref="eyebrowRef"
+              class="font-mono mb-8 text-[10px] uppercase tracking-[0.55em] text-[#00D9FF]/70 sm:mb-10 sm:text-[11px] will-change-transform"
+            >
+              career.refactor · exit architecture
+            </p>
+
+            <HeroHeadline />
+
+            <HeroMeta />
+          </div>
         </div>
       </section>
     </ScrollSection>
@@ -62,16 +83,16 @@ import { ArrowRight } from 'lucide-vue-next'
     <ScrollSection>
       <section
         id="unlearning"
-        class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32"
+        class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
       >
-        <div class="mb-14 max-w-2xl">
-          <p class="font-mono mb-3 text-xs uppercase tracking-[0.28em] text-[#00D9FF]/80">
-            module: unlearning
+        <div class="mb-16 max-w-3xl sm:mb-20">
+          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
+            module · unlearning
           </p>
-          <h2 class="font-display text-3xl font-bold tracking-tight text-[#F4F4F4] sm:text-4xl">
+          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
             The Unlearning
           </h2>
-          <p class="mt-4 text-[#F4F4F4]/55">
+          <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
             Glass panels, sharp intent — three moves to migrate out of default-mode employment.
           </p>
         </div>
@@ -84,12 +105,12 @@ import { ArrowRight } from 'lucide-vue-next'
     </ScrollSection>
 
     <ScrollSection>
-      <section id="stack" class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-        <div class="mb-10 max-w-2xl">
-          <p class="font-mono mb-3 text-xs uppercase tracking-[0.28em] text-[#00D9FF]/80">
+      <section id="stack" class="mx-auto max-w-[90rem] px-5 py-20 sm:px-10 sm:py-28 lg:px-14">
+        <div class="mb-12 max-w-3xl sm:mb-14">
+          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
             dependencies
           </p>
-          <h2 class="font-display text-3xl font-bold tracking-tight text-[#F4F4F4] sm:text-4xl">
+          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
             What we ship with
           </h2>
         </div>
@@ -98,7 +119,7 @@ import { ArrowRight } from 'lucide-vue-next'
     </ScrollSection>
 
     <ScrollSection>
-      <section id="pricing" class="py-24 sm:py-32">
+      <section id="pricing" class="py-28 sm:py-36">
         <PricingSection />
       </section>
     </ScrollSection>
@@ -106,16 +127,16 @@ import { ArrowRight } from 'lucide-vue-next'
     <ScrollSection>
       <section
         id="terminal"
-        class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32"
+        class="mx-auto max-w-[90rem] px-5 py-28 sm:px-10 sm:py-36 lg:px-14"
       >
-        <div class="mb-10 max-w-2xl">
-          <p class="font-mono mb-3 text-xs uppercase tracking-[0.28em] text-[#00D9FF]/80">
+        <div class="mb-12 max-w-3xl sm:mb-14">
+          <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
             stdout
           </p>
-          <h2 class="font-display text-3xl font-bold tracking-tight text-[#F4F4F4] sm:text-4xl">
+          <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
             Commit the mindset
           </h2>
-          <p class="mt-4 text-[#F4F4F4]/55">
+          <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
             Watch the refactor land — your terminal already knows the truth.
           </p>
         </div>
@@ -125,17 +146,18 @@ import { ArrowRight } from 'lucide-vue-next'
 
     <ScrollSection>
       <footer
-        class="mx-auto max-w-6xl border-t border-white/[0.06] px-5 py-16 sm:px-8"
+        class="mx-auto max-w-[90rem] border-t border-white/[0.07] px-5 py-20 sm:px-10 lg:px-14"
       >
-        <div class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div class="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="font-display text-lg font-bold text-[#F4F4F4]">ExitLogic</p>
-            <p class="font-mono mt-2 text-xs text-[#F4F4F4]/40">
-              © {{ new Date().getFullYear() }} · built for the post-salary era
+            <p class="font-display text-xl font-bold tracking-tight text-[#FAFAFA]">ExitLogic</p>
+            <p class="font-mono mt-3 text-[10px] uppercase tracking-[0.28em] text-[#F4F4F4]/38">
+              © {{ new Date().getFullYear() }} · post-salary era
             </p>
           </div>
-          <p class="max-w-sm text-sm leading-relaxed text-[#F4F4F4]/45">
-            Precision typography. Motion that breathes. A surface that feels expensive — because your exit strategy should.
+          <p class="max-w-md font-sans text-sm leading-relaxed text-[#E8E8E8]/42">
+            Precision typography. Motion that breathes. A surface that feels expensive — because your exit strategy
+            should.
           </p>
         </div>
       </footer>

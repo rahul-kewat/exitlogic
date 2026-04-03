@@ -1,28 +1,56 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { animate } from 'motion'
 import { Terminal } from 'lucide-vue-next'
+
+const headerRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const el = headerRef.value
+  if (!el) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  el.style.opacity = '0'
+  el.style.transform = 'translate3d(0, -18px, 0)'
+  animate(
+    el,
+    { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    {
+      delay: 0.12,
+      duration: 0.85,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  )
+})
 </script>
 
 <template>
   <header
-    class="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-[#000000]/70 backdrop-blur-md"
+    ref="headerRef"
+    class="fixed left-0 right-0 top-0 z-[110] border-b border-white/[0.07] bg-[#000205]/55 backdrop-blur-xl backdrop-saturate-150 will-change-transform"
   >
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-      <a href="#" class="font-display group flex items-center gap-2 text-lg font-bold tracking-tight text-[#F4F4F4]">
+    <div class="mx-auto flex max-w-[90rem] items-center justify-between px-5 py-5 sm:px-10 lg:px-14">
+      <a
+        href="#hero"
+        class="font-display group flex items-center gap-2.5 text-[15px] font-bold tracking-tight text-[#FAFAFA]"
+      >
         <span
-          class="inline-block h-2 w-2 rounded-full bg-[#00D9FF] shadow-[0_0_12px_rgba(0,217,255,0.8)] transition group-hover:shadow-[0_0_20px_rgba(0,217,255,1)]"
+          class="inline-block h-2 w-2 rounded-full bg-[#00D9FF] shadow-[0_0_14px_rgba(0,217,255,0.75)] transition duration-500 group-hover:shadow-[0_0_22px_rgba(0,217,255,1)]"
         />
         ExitLogic
       </a>
-      <nav class="hidden items-center gap-10 text-sm text-[#F4F4F4]/55 sm:flex" aria-label="Primary">
-        <a class="transition hover:text-[#00D9FF]" href="#unlearning">The Unlearning</a>
-        <a class="transition hover:text-[#00D9FF]" href="#timeline">Timeline</a>
-        <a class="transition hover:text-[#00D9FF]" href="#stack">Stack</a>
-        <a class="transition hover:text-[#00D9FF]" href="#pricing">Pricing</a>
-        <a class="transition hover:text-[#00D9FF]" href="#terminal">Terminal</a>
+      <nav
+        class="hidden items-center gap-8 text-[11px] font-medium uppercase tracking-[0.28em] text-[#E8E8E8]/45 sm:flex lg:gap-11"
+        aria-label="Primary"
+      >
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#unlearning">Unlearning</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#timeline">Timeline</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#stack">Stack</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#pricing">Pricing</a>
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#terminal">Terminal</a>
       </nav>
       <a
         href="#hero-cta"
-        class="font-mono hidden items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-[11px] text-[#F4F4F4]/70 transition hover:border-[#00D9FF]/40 hover:text-[#00D9FF] sm:inline-flex"
+        class="font-mono hidden items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-3.5 py-2 text-[10px] uppercase tracking-[0.2em] text-[#E8E8E8]/65 transition hover:border-[#00D9FF]/35 hover:text-[#00D9FF] sm:inline-flex"
       >
         <Terminal class="h-3.5 w-3.5" stroke-width="1.5" aria-hidden="true" />
         v1.0.0

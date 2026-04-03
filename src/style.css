@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-family-display: 'League Spartan', ui-sans-serif, system-ui, sans-serif;
+  /* Syne: cinematic stacked headlines (WQF-adjacent); League Spartan kept as fallback */
+  --font-family-display: 'Syne', 'League Spartan', ui-sans-serif, system-ui, sans-serif;
   --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-family-mono: 'Space Mono', ui-monospace, monospace;
 
@@ -18,7 +19,7 @@
   html {
     @apply scroll-smooth antialiased;
     font-family: var(--font-family-sans);
-    background-color: var(--color-void);
+    background-color: #000205;
     color: var(--color-offwhite);
   }
 

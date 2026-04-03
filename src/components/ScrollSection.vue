@@ -17,7 +17,7 @@ function reveal(el: HTMLElement) {
   animate(
     el,
     { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-    { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+    { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
   )
 }
 
@@ -32,7 +32,7 @@ onMounted(() => {
   }
 
   el.style.opacity = '0'
-  el.style.transform = 'translate3d(0, 36px, 0)'
+  el.style.transform = 'translate3d(0, 44px, 0)'
 
   unsubscribe = inView(
     el,

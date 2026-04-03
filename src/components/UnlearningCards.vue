@@ -25,7 +25,7 @@ const cards = [
     <article
       v-for="card in cards"
       :key="card.title"
-      class="glass-card group p-8 transition duration-500 ease-out hover:border-[#00D9FF]/35 hover:shadow-[0_0_48px_rgba(0,217,255,0.15)]"
+      class="glass-card group rounded-3xl p-9 transition duration-500 ease-out hover:border-[#00D9FF]/35 hover:shadow-[0_0_48px_rgba(0,217,255,0.15)]"
     >
       <div
         class="pointer-events-none absolute -right-8 -top-8 z-0 h-32 w-32 rounded-full bg-[#00D9FF]/[0.06] blur-2xl transition duration-500 group-hover:bg-[#00D9FF]/[0.12]"
