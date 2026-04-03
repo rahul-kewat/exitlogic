@@ -1,4 +1,8 @@
-# Build on push and publish dist/ to GitHub Pages (Settings → Pages → GitHub Actions).
+# Build on push and publish dist/ to GitHub Pages.
+#
+# IMPORTANT: Repo Settings → Pages → Build and deployment → Source must be
+# "GitHub Actions" (NOT "Deploy from a branch" with /). Branch deploy serves
+# the dev index.html (/src/main.ts) and breaks in production (wrong MIME for .ts).
 name: Deploy to GitHub Pages
 
 on:
