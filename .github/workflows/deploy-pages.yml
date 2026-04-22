@@ -36,8 +36,8 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          # Web3Forms (https://web3forms.com) — set WEB3FORMS_ACCESS_KEY in repo → Settings → Secrets
-          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          # Web3Forms (https://web3forms.com) — set VITE_WEB3FORMS_ACCESS_KEY in repo → Settings → Secrets
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
           # Base URL of your deployed workers/razorpay-api (POST /create-order, /verify). No secrets in site build.
           VITE_RAZORPAY_ORDER_API_URL: ${{ secrets.VITE_RAZORPAY_ORDER_API_URL }}
 
