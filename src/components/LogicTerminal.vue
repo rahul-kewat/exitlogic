@@ -20,12 +20,12 @@ const codeL1 = ref('')
 const codeL2 = ref('')
 const codeL3 = ref('')
 
-const PHASE1 = '$ git add . && git commit -m "refactor: exit employment paradigm"'
+const PHASE1 = '$ git add . && git commit -m "chore: align delivery to independent stack"'
 const PHASE2 = '[main abc123f] 1 file changed, 1 insertion(+), 0 deletions(-)'
 const PHASE3_FULL = [
-  '/* ExitLogic core message */',
-  'const reality = await refactor(yourNineToFive);',
-  '// → Technical debt cleared. Autonomy restored.',
+  '/* membership */',
+  'const scope = await align(independentDelivery);',
+  '// One fee. Your stack, your terms.',
 ] as const
 
 let timers: ReturnType<typeof setTimeout>[] = []
@@ -207,15 +207,15 @@ onBeforeUnmount(() => {
 
     <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
     <div class="mb-12 max-w-3xl sm:mb-14">
-      <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">stdout</p>
+      <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">command line</p>
       <h2
         class="font-display text-[clamp(1.875rem,4vw,3rem)] font-extrabold tracking-[-0.03em] text-[#FAFAFA]"
         style="font-family: 'League Spartan', 'Inter', ui-sans-serif, system-ui, sans-serif"
       >
-        Commit the mindset.
+        The commit you actually run
       </h2>
       <p class="font-sans mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-        Watch the refactor land — your terminal already knows the truth.
+        Nothing here flatters you. It just records the decision you are willing to put into production.
       </p>
     </div>
 
@@ -269,10 +269,10 @@ onBeforeUnmount(() => {
             >
               <template v-if="line2Complete">
                 <p class="leading-relaxed">
-                  <span class="text-[#ff7b72]">const</span><span class="text-[#F4F4F4]"> reality </span
+                  <span class="text-[#ff7b72]">const</span><span class="text-[#F4F4F4]"> scope </span
                   ><span class="text-[#ff7b72]">=</span><span class="text-[#F4F4F4]"> </span
                   ><span class="text-[#d2a8ff]">await</span><span class="text-[#F4F4F4]"> </span
-                  ><span class="text-[#d2a8ff]">refactor</span><span class="text-[#F4F4F4]">(yourNineToFive);</span>
+                  ><span class="text-[#d2a8ff]">align</span><span class="text-[#F4F4F4]">(independentDelivery);</span>
                 </p>
               </template>
               <p v-else class="text-[#79c0ff]/95">
@@ -299,10 +299,10 @@ onBeforeUnmount(() => {
     >
       <div v-if="showStatusToast" class="mt-8 max-w-3xl space-y-4">
         <p class="font-mono text-[11px] uppercase tracking-[0.35em] text-[#00D9FF]/90 sm:text-xs">
-          [SYSTEM STATUS]: FREEDOM_ENGINE_RUNNING
+          [ok] membership_scope_defined
         </p>
         <p class="font-sans text-base leading-relaxed text-[#E8E8E8]/70 sm:text-lg">
-          Your terminal doesn't lie. The code for your freedom is already written—you just haven't pushed it yet.
+          The only remaining step is the deploy you are willing to own.
         </p>
       </div>
     </Transition>

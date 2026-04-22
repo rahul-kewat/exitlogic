@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Infinity as InfinityIcon } from 'lucide-vue-next'
+import MasteryRobotIllustration from './MasteryRobotIllustration.vue'
 </script>
 
 <template>
@@ -19,30 +20,26 @@ import { Infinity as InfinityIcon } from 'lucide-vue-next'
         <div class="relative max-w-3xl">
           <div class="mb-6 flex items-center gap-3">
             <InfinityIcon class="h-7 w-7 text-[#00D9FF]/90" stroke-width="1.5" aria-hidden="true" />
-            <p class="font-mono text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">lifetime mastery</p>
+            <p class="font-mono text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">membership</p>
           </div>
           <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-            One enrollment. Every future update. Lifetime access.
+            Enroll once. Keep access. Every new release is included.
           </h2>
           <p class="font-sans mt-6 text-lg leading-relaxed text-[#E8E8E8]/65 sm:text-xl">
-            You're not buying a single course—you're buying a permanent seat at the table. Every shift in the stack—Laravel,
-            Vue, AI agents, whatever ships next—lands in your vault. New members will pay for each wave; you never pay again.
+            The library deepens with the stack. Your price does not. New Laravel, Vue, and AI modules ship to your
+            membership as we add them—public pricing for later cohorts may move; yours is set at entry.
           </p>
           <p class="font-sans mt-6 text-base leading-relaxed text-[#E8E8E8]/50">
-            That's not a perk. It's leverage for the rest of your career.
+            One clear membership for a product that does not stand still.
           </p>
         </div>
 
-        <!-- Indicium-style vertical accent panel -->
+        <!-- 3D-style robot bust (SVG) — conversational gesture -->
         <div
-          class="relative hidden min-h-[280px] rounded-2xl border border-[#00D9FF]/15 bg-[#00D9FF]/[0.03] lg:flex lg:flex-col lg:justify-end lg:p-8"
+          class="relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#00D9FF]/15 bg-[#00D9FF]/[0.03] p-6 sm:min-h-[300px] sm:p-8 lg:min-h-[320px]"
           aria-hidden="true"
         >
-          <div class="space-y-4">
-            <div class="h-1 w-12 rounded-full bg-[#00D9FF]/60" />
-            <div class="h-1 w-8 rounded-full bg-[#00D9FF]/30" />
-            <div class="h-1 w-16 rounded-full bg-[#00D9FF]/20" />
-          </div>
+          <MasteryRobotIllustration />
         </div>
       </div>
     </div>

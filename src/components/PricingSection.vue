@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import CountdownTimer from './CountdownTimer.vue'
 import PricingCard from './PricingCard.vue'
 import { EARLY_ACCESS_END } from '../config/earlyAccess'
 import { usePricingDisplay } from '../composables/usePricingDisplay'
+import { startMembershipRazorpayCheckout } from '../lib/razorpayCheckout'
 import { Clock, Lock, Users, Zap } from 'lucide-vue-next'
 
 const {
@@ -26,30 +27,54 @@ const spotsLeft = spotsTotal - spotsTaken
 const fillPercent = computed(() => (spotsTaken / spotsTotal) * 100)
 
 const features = [
-  'Lifetime vault access—every new Laravel, Vue, and AI-agent module ships to you at no extra cost.',
-  'Full AI-accelerated workflow track: architecture, testing, and Cursor-first freelancing.',
-  'Private Discord—cohort pressure, async office hours, deal flow you can’t get from a Udemy comment.',
-  'Templates, contracts, and proposal kits built for solo operators who bill like agencies.',
-  'Early drops before the public roadmap—when we ship it, you already have it.',
-  'Legacy rate locked: as the vault doubles, new members pay double—you never pay again.',
-  'Purchasing parity pricing when your region qualifies (via PPP API).',
-  'Invoice-ready receipt. One payment, no subscription trap.',
+  'Ongoing access to the full library—new Laravel, Vue, and AI modules ship into your membership.',
+  'Structured workflow track: architecture, testing, and delivery for independent operators.',
+  'Private community: async access, office hours, and room with peers on the same stack.',
+  'Business templates: contracts, scoping, and proposals for solo and small-shop billing.',
+  'New material lands in your membership as we release it—no add-on “season pass.”',
+  'Founding price holds for you at enrollment while public rates may increase for new members.',
+  'Purchasing power parity (PPP) when your region qualifies on checkout.',
+  'One-time payment, no recurring software fee—invoice-friendly receipt for your books.',
 ] as const
 
+const checkoutLoading = ref(false)
+const checkoutError = ref<string | null>(null)
+const checkoutSuccess = ref(false)
+
 function onCta() {
-  // Reserved: checkout session / Stripe
+  if (checkoutLoading.value) return
+  checkoutError.value = null
+  checkoutSuccess.value = false
+  checkoutLoading.value = true
+
+  void startMembershipRazorpayCheckout({
+    onReadyToPay: () => {
+      checkoutLoading.value = false
+    },
+    onSuccess: () => {
+      checkoutSuccess.value = true
+      checkoutLoading.value = false
+    },
+    onError: (msg) => {
+      checkoutError.value = msg
+      checkoutLoading.value = false
+    },
+    onDismiss: () => {
+      checkoutLoading.value = false
+    },
+  })
 }
 
 const teamPoints = [
-  'Volume discounts for 5+ seats',
-  'Custom invoicing & PO support',
-  'Shared workspace roadmap calls',
+  '5+ seats: volume terms on request',
+  'Invoicing and PO: supported',
+  'Shared planning calls: scheduled with larger enrollments',
 ] as const
 
 const trustChips = [
-  { label: 'One payment', sub: 'No subscription', icon: Zap },
-  { label: 'Vault grows', sub: 'You don’t re-pay', icon: Lock },
-  { label: 'Legacy lock', sub: 'Price won’t reset on you', icon: Clock },
+  { label: 'One-time', sub: 'No recurring software fee', icon: Zap },
+  { label: 'Library grows', sub: 'Included in membership', icon: Lock },
+  { label: 'Rate at entry', sub: 'Grandfathered for you', icon: Clock },
 ] as const
 </script>
 
@@ -67,17 +92,17 @@ const trustChips = [
           class="font-mono mb-4 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-[#00D9FF]/85"
         >
           <span class="h-px w-8 bg-gradient-to-r from-transparent to-[#00D9FF]/60" aria-hidden="true" />
-          pricing · exit ticket
+          membership
           <span class="h-px w-8 bg-gradient-to-l from-transparent to-[#00D9FF]/60" aria-hidden="true" />
         </p>
         <h2
           class="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.03em] text-[#FAFAFA]"
         >
-          Lock the unfair advantage before the price doubles
+          Current rate, locked at enrollment
         </h2>
         <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-          This isn't another course drop—it's a vault that grows while your receipt stays the same. Early members ride at
-          today's legacy rate forever; latecomers fund the next wave at full price.
+          A single entry fee for a growing library. What we add later ships to your membership. Public price for new
+          members can rise as the program expands; your tier stays where you started.
         </p>
 
         <div class="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-4 sm:gap-6">
@@ -113,17 +138,17 @@ const trustChips = [
             >
               <Lock class="h-5 w-5 text-[#00D9FF]" stroke-width="1.75" />
             </span>
-            <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-[#00D9FF]">beta · legacy rate</p>
+            <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-[#00D9FF]">beta · founding rate</p>
           </div>
           <p class="font-sans text-base leading-relaxed text-[#E8E8E8]/80 sm:text-lg">
-            The number on your screen is a
-            <span class="font-semibold text-[#FAFAFA]">legacy rate</span>
-            for people who move before the vault fills out. Every major module we add—more stack tracks, more AI
-            playbooks—pushes the public price up for new enrollments. You pay once at this tier and never again, no matter
-            how deep the library gets.
+            The price shown is a
+            <span class="font-semibold text-[#FAFAFA]">founding member rate</span>
+            for this phase of the product. As we add tracks and playbooks, new enrollments may see a higher public price.
+            You are billed once at this tier; new material in the membership does not add a second software charge.
           </p>
-          <p class="font-sans mt-5 border-l-2 border-[#00D9FF]/40 pl-4 text-sm italic text-[#F4F4F4]/50">
-            Wait, and you're not saving money—you're choosing to fund someone else's head start.
+          <p class="font-sans mt-5 border-l-2 border-[#00D9FF]/40 pl-4 text-sm text-[#F4F4F4]/45">
+            A higher public price later reflects a deeper library, not a surcharge on the same shelf. Your enrollment date
+            defines your tier.
           </p>
         </div>
       </div>
@@ -131,6 +156,13 @@ const trustChips = [
       <!-- Card + urgency -->
       <div class="flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:justify-center lg:gap-14 xl:gap-20">
         <div class="w-full max-w-xl shrink-0 lg:max-w-lg">
+          <p
+            v-if="checkoutSuccess"
+            class="font-sans mb-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-center text-sm leading-relaxed text-emerald-100/95"
+            role="status"
+          >
+            Payment received. Thank you—your receipt will be sent by email when Razorpay confirms the payment.
+          </p>
           <PricingCard
             :list-price-label="listPriceLabel"
             :price-label="priceLabel"
@@ -138,7 +170,9 @@ const trustChips = [
             :ppp-discount-percent="pppDiscountPercent"
             :ppp-region="pppRegion"
             :features="features"
-            cta-caption="Join 500+ developers who decided to stop asking for permission."
+            :is-checkout-loading="checkoutLoading"
+            :checkout-error="checkoutError"
+            cta-caption="Cohort access and new modules included as we ship them."
             @cta="onCta"
           />
         </div>
@@ -160,7 +194,7 @@ const trustChips = [
               aria-hidden="true"
             />
             <p class="font-mono mb-2 text-center text-[10px] uppercase tracking-[0.3em] text-[#F4F4F4]/45">
-              Legacy window closes in
+              Founding rate window
             </p>
             <CountdownTimer :target-date="EARLY_ACCESS_END" />
             <div class="mt-10">
@@ -175,7 +209,7 @@ const trustChips = [
                 />
               </div>
               <p class="font-mono mt-4 text-center text-[10px] leading-relaxed text-[#F4F4F4]/35">
-                When seats hit zero, the next cohort ships at the new public price.
+                When this tranche of seats is gone, the next offer uses the updated public price.
               </p>
             </div>
           </div>
@@ -197,7 +231,7 @@ const trustChips = [
             >
               <Users class="h-6 w-6 text-[#00D9FF]" stroke-width="1.5" aria-hidden="true" />
             </span>
-            <h3 class="font-display text-xl font-bold text-[#FAFAFA]">For teams</h3>
+            <h3 class="font-display text-xl font-bold text-[#FAFAFA]">Teams &amp; orgs</h3>
           </div>
           <ul class="space-y-4 text-[15px] text-[#E8E8E8]/70">
             <li v-for="(pt, i) in teamPoints" :key="i" class="flex gap-3">

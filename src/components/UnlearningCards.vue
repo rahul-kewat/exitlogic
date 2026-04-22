@@ -4,32 +4,32 @@ import { Bot, GitMerge, Sparkles, Target, TestTube, Zap } from 'lucide-vue-next'
 const cards = [
   {
     title: 'AI-driven architecture',
-    body: 'Design systems in minutes, not days—spec the stack, ship the skeleton, let AI handle the boilerplate you used to dread.',
+    body: 'Shape systems quickly: spec the stack, stand up structure, and let AI absorb boilerplate you no longer need to type by hand.',
     icon: Sparkles,
   },
   {
     title: 'Autonomous testing',
-    body: 'Let AI surface edge cases before your client does. Tests become a safety net, not a weekend tax.',
+    body: 'Use AI to widen coverage and surface edge cases before production. Tests stay a quality gate, not a weekend ritual.',
     icon: TestTube,
   },
   {
-    title: 'Rapid freelancing',
-    body: 'Learn how to compress forty hours of grind into four using the Cursor + AI workflow—so your calendar matches your ambition.',
+    title: 'High-leverage delivery',
+    body: 'Cursor-style workflows to tighten delivery time—so the calendar matches scope you actually want to run.',
     icon: Zap,
   },
   {
     title: 'Agentic pipelines',
-    body: 'Chain research, spec, and implementation agents like microservices—you steer the orchestration while the swarm does the heavy lifting.',
+    body: 'Sequence research, specification, and implementation with clear handoffs—you own orchestration, agents handle volume.',
     icon: Bot,
   },
   {
     title: 'Merge-ready delivery',
-    body: 'AI-assisted diffs, security passes, and PRs your lead can approve fast—fewer review cycles, zero “I’ll look Monday” debt.',
+    body: 'Diffs, checks, and pull requests your reviewers can act on in one pass. Fewer review loops, less idle time.',
     icon: GitMerge,
   },
   {
-    title: 'Offer & leverage',
-    body: 'Package scope, pricing, and proof so clients buy the outcome—not your hours. That’s how you escape the hourly trap without burning trust.',
+    title: 'Commercials & offers',
+    body: 'Scope, pricing, and proof structured so the sale is the outcome, not a tally of hours—without undermining trust.',
     icon: Target,
   },
 ] as const

@@ -42,6 +42,7 @@ onMounted(() => {
         class="hidden flex-wrap items-center justify-end gap-x-6 gap-y-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#E8E8E8]/45 lg:flex lg:gap-x-8"
         aria-label="Primary"
       >
+        <a class="transition duration-300 hover:text-[#00D9FF]" href="#notify">Updates</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#hard-truth">Truth</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#lifetime-mastery">Vault</a>
         <a class="transition duration-300 hover:text-[#00D9FF]" href="#ai-workflow">AI flow</a>

@@ -1,0 +1,9 @@
+# Deploy: npm i -g wrangler && cd workers && wrangler deploy razorpay-api.js
+# Secrets: wrangler secret put RAZORPAY_KEY_ID
+#          wrangler secret put RAZORPAY_KEY_SECRET
+#          wrangler secret put RAZORPAY_AMOUNT_PAISE   # e.g. 12425200 = INR 124252.00 in paise — set to YOUR price
+#          wrangler secret put RAZORPAY_CURRENCY       # optional, default INR
+
+name = "exitlogic-razorpay"
+main = "razorpay-api.js"
+compatibility_date = "2024-01-01"

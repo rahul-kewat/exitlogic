@@ -48,12 +48,13 @@ onUnmounted(() => {
 <template>
   <div ref="root" class="timeline-module opacity-0 will-change-[transform,opacity,filter]">
     <div class="mb-4">
-      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-[#00D9FF]/85">01 · Mindset refactor</p>
+      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-[#00D9FF]/85">01 · Mindset</p>
       <h3 class="font-sans mt-2 text-2xl font-semibold tracking-tight text-[#F4F4F4] md:text-3xl">
-        Decompile corporate bias
+        Rework the default story
       </h3>
       <p class="font-sans mt-2 max-w-xl text-[15px] leading-relaxed text-[#F4F4F4]/55">
-        Your OS shipped with scripts you never authored. Watch the legacy stack get replaced — live.
+        Most of us run scripts we did not write. This module rewrites the contract—how you think about risk, work, and
+        independence.
       </p>
     </div>
 
@@ -83,7 +84,7 @@ onUnmounted(() => {
               : 'translate-x-0 opacity-100'
           "
         >
-          Corporate Bias (Legacy)
+          Employed / default
         </div>
         <div
           class="font-mono absolute inset-0 flex flex-1 items-center justify-center px-3 text-center text-[11px] leading-snug text-[#00D9FF] transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:text-xs md:px-6"
@@ -93,7 +94,7 @@ onUnmounted(() => {
               : 'translate-x-full opacity-0 blur-sm'
           "
         >
-          Freelance Freedom (Upgrade V2.0)
+          Independent operator
         </div>
       </div>
     </div>

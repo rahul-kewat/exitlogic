@@ -33,12 +33,12 @@ onUnmounted(() => stopReveal?.())
 <template>
   <div ref="root" class="timeline-module opacity-0 will-change-[transform,opacity,filter]">
     <div class="mb-4">
-      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-[#00D9FF]/85">02 · Turbo mode / agents</p>
+      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-[#00D9FF]/85">02 · Agents</p>
       <h3 class="font-sans mt-2 text-2xl font-semibold tracking-tight text-[#F4F4F4] md:text-3xl">
-        Autonomous routing
+        From intent to delivery
       </h3>
       <p class="font-sans mt-2 max-w-xl text-[15px] leading-relaxed text-[#F4F4F4]/55">
-        Intent enters cold. Agents warm the path — contracts, outreach, and delivery traced in real time.
+        How you route work through agents—contracts, outreach, implementation—with a trace you can audit and own.
       </p>
     </div>
 
@@ -118,7 +118,7 @@ onUnmounted(() => stopReveal?.())
         </circle>
       </svg>
 
-      <p class="font-mono mt-2 text-center text-[10px] text-[#F4F4F4]/35">live trace · multi-agent fan-out</p>
+      <p class="font-mono mt-2 text-center text-[10px] text-[#F4F4F4]/35">agent fan-out</p>
     </div>
   </div>
 </template>

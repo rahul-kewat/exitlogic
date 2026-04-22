@@ -17,10 +17,10 @@ onUnmounted(() => stopReveal?.())
     <div class="mb-4">
       <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-[#00D9FF]/85">03 · Workflows</p>
       <h3 class="font-sans mt-2 text-2xl font-semibold tracking-tight text-[#F4F4F4] md:text-3xl">
-        Skeletal pipelines
+        Repeatable commercial rails
       </h3>
       <p class="font-sans mt-2 max-w-xl text-[15px] leading-relaxed text-[#F4F4F4]/55">
-        Repeatable blocks — proposals, scopes, invoices — rotating as one coherent machine.
+        Proposals, scope, and invoicing as reusable blocks—aligned so the pipeline feels like one system, not ad hoc files.
       </p>
     </div>
 
@@ -46,7 +46,7 @@ onUnmounted(() => stopReveal?.())
       />
     </div>
 
-    <p class="font-mono mt-4 text-center text-[10px] text-[#F4F4F4]/35">abstract data solids · slow orbit</p>
+    <p class="font-mono mt-4 text-center text-[10px] text-[#F4F4F4]/35">pipeline visualization</p>
   </div>
 </template>
 

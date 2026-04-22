@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { animate } from 'motion'
 
-const lines = ['THE INDUSTRY IS MOVING.', "DON'T GET LEFT", 'BEHIND IN A', 'CUBICLE.'] as const
+const lines = ['ONE', 'LIFETIME', 'MEMBERSHIP', 'INCLUDED.'] as const
 const root = ref<HTMLElement | null>(null)
 
 onMounted(() => {

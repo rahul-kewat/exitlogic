@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import FeatureList from './FeatureList.vue'
-import { Shield, Sparkles } from 'lucide-vue-next'
+import { Loader2, Shield, Sparkles } from 'lucide-vue-next'
 
 withDefaults(
   defineProps<{
@@ -12,10 +12,14 @@ withDefaults(
     features: readonly string[]
     ctaLabel?: string
     ctaCaption?: string
+    isCheckoutLoading?: boolean
+    checkoutError?: string | null
   }>(),
   {
     ctaLabel: '',
     ctaCaption: '',
+    isCheckoutLoading: false,
+    checkoutError: null,
   },
 )
 
@@ -55,25 +59,25 @@ defineEmits<{
             class="inline-flex items-center gap-2 rounded-full border border-[#00D9FF]/40 bg-[#00D9FF]/10 px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[#00D9FF]"
           >
             <Sparkles class="h-3.5 w-3.5" stroke-width="2" aria-hidden="true" />
-            Legacy rate · Beta lock-in
+            Founding member rate
           </div>
           <div
             v-else
             class="inline-flex rounded-full border border-white/15 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F4F4F4]/45"
           >
-            Standard pricing
+            Public pricing
           </div>
         </div>
 
         <div class="mb-8 border-b border-white/[0.07] pb-8">
-          <p class="font-mono text-[10px] uppercase tracking-[0.35em] text-[#F4F4F4]/35">Total today</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.35em] text-[#F4F4F4]/35">Due today</p>
           <div class="mt-3 flex flex-wrap items-end gap-3">
             <span
               class="font-display bg-gradient-to-br from-[#FAFAFA] to-[#B8B8B8] bg-clip-text text-5xl font-black tracking-tight text-transparent sm:text-6xl"
             >
               {{ priceLabel }}
             </span>
-            <span class="font-mono mb-2 text-sm text-[#F4F4F4]/45">one-time</span>
+            <span class="font-mono mb-2 text-sm text-[#F4F4F4]/45">one-time membership</span>
           </div>
           <div v-if="earlyAccessActive" class="mt-4 flex flex-wrap items-center gap-3">
             <span class="font-mono text-xl text-[#F4F4F4]/30 line-through decoration-[#F4F4F4]/20 sm:text-2xl">
@@ -81,7 +85,7 @@ defineEmits<{
             </span>
             <span
               class="rounded-md border border-[#00D9FF]/30 bg-[#00D9FF]/10 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-[#00D9FF]"
-              >Early access</span
+              >Founding window</span
             >
           </div>
         </div>
@@ -91,26 +95,37 @@ defineEmits<{
           <span v-if="pppRegion" class="text-[#F4F4F4]/50">({{ pppRegion }})</span>
         </p>
         <p v-else class="mb-8 text-sm leading-relaxed text-[#F4F4F4]/45">
-          Buy once — no subscription. Local pricing via PPP when available.
+          Single payment, no software subscription. PPP available where offered at checkout.
         </p>
 
         <div class="mb-3">
-          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-[#00D9FF]/70">Included in your vault</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-[#00D9FF]/70">Included in membership</p>
         </div>
         <FeatureList :items="features" />
 
         <button
           type="button"
-          class="font-display group relative mt-10 w-full overflow-hidden rounded-xl bg-[#00D9FF] py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_40px_rgba(0,217,255,0.35)] transition duration-300 hover:shadow-[0_0_64px_rgba(0,217,255,0.5)]"
+          :disabled="isCheckoutLoading"
+          class="font-display group relative mt-10 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#00D9FF] py-4 text-base font-bold tracking-tight text-[#000000] shadow-[0_0_40px_rgba(0,217,255,0.35)] transition duration-300 hover:shadow-[0_0_64px_rgba(0,217,255,0.5)] disabled:cursor-wait disabled:opacity-85"
           @click="$emit('cta')"
         >
           <span
             class="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"
           />
+          <Loader2
+            v-if="isCheckoutLoading"
+            class="relative h-5 w-5 shrink-0 animate-spin"
+            stroke-width="2.5"
+            aria-hidden="true"
+          />
           <span class="relative">{{
-            ctaLabel || (earlyAccessActive ? 'Secure My Future Access' : 'Claim My Unfair Advantage')
+            ctaLabel || (earlyAccessActive ? 'Enroll at founding rate' : 'Enroll in membership')
           }}</span>
         </button>
+
+        <p v-if="checkoutError" class="mt-3 text-center text-[13px] leading-snug text-rose-300/95" role="alert">
+          {{ checkoutError }}
+        </p>
 
         <p v-if="ctaCaption" class="mt-4 text-center text-[13px] leading-snug text-[#F4F4F4]/45">
           {{ ctaCaption }}
@@ -118,7 +133,7 @@ defineEmits<{
 
         <div class="mt-6 flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-sm text-[#F4F4F4]/50">
           <Shield class="mt-0.5 h-5 w-5 shrink-0 text-[#00D9FF]/75" stroke-width="1.75" aria-hidden="true" />
-          <span>30-day refund if ExitLogic isn’t a fit — no questions asked.</span>
+          <span>30-day refund if the membership is not a fit. No questionnaire.</span>
         </div>
 
         <div

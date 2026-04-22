@@ -15,6 +15,7 @@ import TimelineSection from './components/timeline/TimelineSection.vue'
 import HardTruthSection from './components/sections/HardTruthSection.vue'
 import LifetimeMasterySection from './components/sections/LifetimeMasterySection.vue'
 import DeveloperComparison from './components/sections/DeveloperComparison.vue'
+import LaunchNotify from './components/LaunchNotify.vue'
 
 /** Lazy-load Three.js so first paint stays light. */
 const HeroWebGL = defineAsyncComponent(() => import('./components/hero/HeroWebGL.vue'))
@@ -76,7 +77,7 @@ onMounted(() => {
               ref="eyebrowRef"
               class="font-mono mb-8 text-[10px] uppercase tracking-[0.55em] text-[#00D9FF]/70 sm:mb-10 sm:text-[11px] will-change-transform"
             >
-              exit strategy · ai-powered stack
+              lifetime membership · full stack
             </p>
 
             <HeroHeadline />
@@ -84,6 +85,16 @@ onMounted(() => {
             <HeroMeta />
           </div>
         </div>
+      </section>
+    </ScrollSection>
+
+    <ScrollSection>
+      <section
+        id="notify"
+        class="relative border-t border-white/[0.05] bg-[#000205] py-12 sm:py-14"
+        aria-labelledby="notify-heading"
+      >
+        <LaunchNotify />
       </section>
     </ScrollSection>
 
@@ -107,13 +118,14 @@ onMounted(() => {
         <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
           <div class="mx-auto mb-16 max-w-3xl text-center sm:mb-20">
             <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-              the ai-accelerated workflow
+              curriculum
             </p>
             <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-              Ship like the stack owes you interest
+              Ship the work the market actually buys
             </h2>
             <p class="font-sans mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#E8E8E8]/55">
-              Not “learn to code slower”—learn to lead the machine. Six levers that separate operators from order-takers.
+              Six modules—from architecture to commercial delivery. Taught for operating leverage, not for ticking lessons
+              off a list.
             </p>
           </div>
           <UnlearningCards />
@@ -134,13 +146,14 @@ onMounted(() => {
         <div class="relative mx-auto max-w-[90rem] px-5 sm:px-10 lg:px-14">
           <div class="mx-auto mb-14 max-w-3xl text-center sm:mb-16">
             <p class="font-mono mb-4 text-[10px] uppercase tracking-[0.45em] text-[#00D9FF]/75">
-              dependencies
+              curriculum · AI delivery
             </p>
             <h2 class="font-display text-[clamp(1.875rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[#FAFAFA]">
-              The stack you’ll actually bill on
+              The capabilities clients pay for now
             </h2>
             <p class="font-sans mx-auto mt-4 max-w-2xl text-[#E8E8E8]/50">
-              Laravel, Vue, AI tooling—chosen to compound, not to pad a resume.
+              Prompt engineering, agents, RAG, MCP, evals, and the rest of the modern surface—taught as billable
+              practice, not tool hype. Select any lane below for concrete learning outcomes.
             </p>
           </div>
           <TechMarquee />
@@ -176,11 +189,11 @@ onMounted(() => {
           <div>
             <p class="font-display text-xl font-bold tracking-tight text-[#FAFAFA]">ExitLogic</p>
             <p class="font-mono mt-3 text-[10px] uppercase tracking-[0.28em] text-[#F4F4F4]/38">
-              © {{ new Date().getFullYear() }} · built for the exit, not the performance review
+              © {{ new Date().getFullYear() }} · lifetime membership, professional use
             </p>
           </div>
           <p class="max-w-md font-sans text-sm leading-relaxed text-[#E8E8E8]/42">
-            The window for “later” is closing. The legacy rate isn’t.
+            Enrollment terms and public pricing are published with each open window.
           </p>
         </div>
       </footer>
